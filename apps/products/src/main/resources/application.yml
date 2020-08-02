@@ -1,0 +1,8 @@
+server:
+  port: 8082
+lass:
+  mqtt:
+    host: localhost
+    port: 1883
+    clientId: product-service
+    persistence: false

@@ -1,0 +1,7 @@
+version: '3'
+services:
+  mqtt:
+    image: hivemq/hivemq4
+    ports:
+      - 1883:1883
+      - 8085:8080
