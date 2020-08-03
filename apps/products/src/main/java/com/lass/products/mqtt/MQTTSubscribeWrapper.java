@@ -3,6 +3,7 @@ package com.lass.products.mqtt;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.hivemq.client.mqtt.datatypes.MqttQos;
+import com.lass.mqtt.MQTTClientWrapper;
 import com.lass.products.persistence.ProductEntity;
 import com.lass.products.persistence.repository.ProductRepository;
 import com.lass.products.service.ProductService;
@@ -16,7 +17,7 @@ public class MQTTSubscribeWrapper {
 
     private ProductService productService;
 
-    public MQTTSubscribeWrapper(MQTTClientWrapper mqttClientWrapper,ProductService productService) {
+    public MQTTSubscribeWrapper(MQTTClientWrapper mqttClientWrapper, ProductService productService) {
         this.productService = productService;
         mqttClientWrapper.subscribe("lass/categories/delete", MqttQos.AT_LEAST_ONCE, "product-service", DeleteCategoryMQTTPayload.class, this::handleDeleteCategory);
     }

@@ -1,4 +1,4 @@
-package com.lass.categories.mqtt;
+package com.lass.mqtt;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -11,6 +11,8 @@ import com.hivemq.client.mqtt.mqtt5.message.publish.Mqtt5Publish;
 import io.reactivex.plugins.RxJavaPlugins;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.autoconfigure.AutoConfigurationPackage;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -18,8 +20,8 @@ import java.util.UUID;
 import java.util.concurrent.ExecutionException;
 import java.util.function.Consumer;
 
-
 @Service
+@EnableConfigurationProperties(MQTTConfigurationProperties.class)
 public class MQTTClientWrapper {
     private static final Logger LOGGER = LoggerFactory.getLogger(MQTTClientWrapper.class);
     private final Mqtt5BlockingClient client;
@@ -47,10 +49,10 @@ public class MQTTClientWrapper {
                     .send();
 
         if (connResponse.getReasonCode() == Mqtt5ConnAckReasonCode.SUCCESS)
-            LOGGER.info("connected to mqtt at {}:{} as {}", configurations.getHost(), configurations.getPort(), connResponse.getAssignedClientIdentifier());
+            LOGGER.info("connected to com.lass.mqtt at {}:{} as {}", configurations.getHost(), configurations.getPort(), connResponse.getAssignedClientIdentifier());
         else {
-            LOGGER.error("could not connect ot mqtt: {}, {}", connResponse.getReasonCode(), connResponse.getReasonString());
-            throw new RuntimeException("could not connect to mqtt broker");
+            LOGGER.error("could not connect ot com.lass.mqtt: {}, {}", connResponse.getReasonCode(), connResponse.getReasonString());
+            throw new RuntimeException("could not connect to com.lass.mqtt broker");
         }
     }
 
@@ -110,4 +112,3 @@ public class MQTTClientWrapper {
         };
     }
 }
-

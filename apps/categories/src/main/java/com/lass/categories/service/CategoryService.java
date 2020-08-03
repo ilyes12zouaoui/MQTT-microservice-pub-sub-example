@@ -1,9 +1,7 @@
 package com.lass.categories.service;
 
-import com.hivemq.client.mqtt.datatypes.MqttQos;
 import com.lass.categories.commun.mapper.CategoryMapper;
 import com.lass.categories.commun.to.CategoryTO;
-import com.lass.categories.mqtt.MQTTClientWrapper;
 import com.lass.categories.mqtt.MQTTPublishWrapper;
 import com.lass.categories.persistence.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;

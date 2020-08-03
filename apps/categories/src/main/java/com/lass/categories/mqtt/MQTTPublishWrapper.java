@@ -3,6 +3,7 @@ package com.lass.categories.mqtt;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.hivemq.client.mqtt.datatypes.MqttQos;
+import com.lass.mqtt.MQTTClientWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

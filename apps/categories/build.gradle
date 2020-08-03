@@ -10,9 +10,11 @@ sourceCompatibility = '11'
 
 repositories {
 	mavenCentral()
+	mavenLocal()
 }
 
 dependencies {
+	implementation 'com.lass:LassMQTT:0.0.2'
 	runtimeOnly 'com.h2database:h2'
 	implementation "com.hivemq:hivemq-mqtt-client:1.2.0"
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'

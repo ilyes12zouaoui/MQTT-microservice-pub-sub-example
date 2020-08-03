@@ -1,9 +1,9 @@
-package com.lass.products.mqtt;
+package com.lass.mqtt;
+
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
-@Configuration
 @ConfigurationProperties(prefix = "lass.mqtt")
 public class MQTTConfigurationProperties {
     private String host;
