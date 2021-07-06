@@ -11,6 +11,7 @@ import com.hivemq.client.mqtt.mqtt5.message.publish.Mqtt5Publish;
 import io.reactivex.plugins.RxJavaPlugins;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -20,7 +21,8 @@ import java.util.function.Consumer;
 
 
 @Service
-public class MQTTClientWrapper {
+@ConditionalOnProperty("lass.mqtt.host")
+public class MQTTClientWrapper implements MqttClientInterface {
     private static final Logger LOGGER = LoggerFactory.getLogger(MQTTClientWrapper.class);
     private final Mqtt5BlockingClient client;
     private final ObjectMapper om;

@@ -16,7 +16,7 @@ public class MQTTSubscribeWrapper {
 
     private ProductService productService;
 
-    public MQTTSubscribeWrapper(MQTTClientWrapper mqttClientWrapper,ProductService productService) {
+    public MQTTSubscribeWrapper(MqttClientInterface mqttClientWrapper,ProductService productService) {
         this.productService = productService;
         mqttClientWrapper.subscribe("lass/categories/delete", MqttQos.AT_LEAST_ONCE, "product-service", DeleteCategoryMQTTPayload.class, this::handleDeleteCategory);
     }
